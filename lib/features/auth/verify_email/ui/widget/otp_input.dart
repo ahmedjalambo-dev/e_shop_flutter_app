@@ -11,7 +11,7 @@ class OtpInputWidget extends StatefulWidget {
 
   const OtpInputWidget({
     super.key,
-    this.length = 4,
+    this.length = 6,
     this.onCompleted,
     this.onChanged,
   });
@@ -79,7 +79,7 @@ class _OtpInputWidgetState extends State<OtpInputWidget> {
       children: List.generate(
         widget.length,
         (index) => Padding(
-          padding: EdgeInsets.only(right: index < widget.length - 1 ? 12 : 0),
+          padding: EdgeInsets.only(right: index < widget.length - 1 ? 8 : 0),
           child: _buildOtpField(index),
         ),
       ),
@@ -102,6 +102,7 @@ class _OtpInputWidgetState extends State<OtpInputWidget> {
           style: MyTextStyle.body.m.copyWith(
             color: MyColor.neutral.dark.darkest,
           ),
+          cursorColor: MyColor.highlight.darkest,
           decoration: InputDecoration(
             counterText: '',
             enabledBorder: OutlineInputBorder(

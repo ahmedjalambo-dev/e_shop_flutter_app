@@ -4,17 +4,22 @@ import 'package:e_shop_flutter_app/core/themes/my_colors.dart';
 import 'package:e_shop_flutter_app/core/themes/my_text_style.dart';
 import 'package:e_shop_flutter_app/core/widgets/my_text_button.dart';
 import 'package:e_shop_flutter_app/core/widgets/spacing_widgets.dart';
+import 'package:e_shop_flutter_app/features/auth/verify_email/cubit/verify_email_cubit.dart';
 import 'package:e_shop_flutter_app/features/auth/verify_email/ui/widget/otp_input.dart';
+import 'package:e_shop_flutter_app/features/auth/verify_email/ui/widget/verify_email_bloc_listener.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class VerifyEmailScreen extends StatefulWidget {
-  const VerifyEmailScreen({super.key});
+  final String email;
+  const VerifyEmailScreen({super.key, required this.email});
 
   @override
   State<VerifyEmailScreen> createState() => _VerifyEmailScreenState();
 }
 
 class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
+  late TextEditingController otpController;
   String otpCode = '';
   bool isOtpComplete = false;
   @override
@@ -29,14 +34,14 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
             Text('Enter confirmation code', style: MyTextStyle.heading.h3),
             const VerticalSpace(8),
             Text(
-              'A 4-digit code was sent to\nlucasscott3@email.com', // TODO: add email value form forgot password screen
+              'A 6-digit code was sent to\n${widget.email}',
               style: MyTextStyle.body.s.copyWith(
                 color: MyColor.neutral.dark.light,
               ),
             ),
             const VerticalSpace(24),
             OtpInputWidget(
-              length: 4,
+              length: 6,
               onChanged: (value) {
                 setState(() {
                   otpCode = value;
@@ -49,7 +54,6 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                   isOtpComplete = true;
                 });
                 // Auto-proceed when OTP is complete
-                // TODO: Check if OTP is validate with email
               },
             ),
             const VerticalSpace(24),
@@ -67,19 +71,21 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
             ),
             const VerticalSpace(28),
             MyTextButton(
-              text: 'Continue',
+              text: 'Verify',
               textStyle: MyTextStyle.action.m.copyWith(
                 color: MyColor.neutral.light.lightest,
               ),
-              onPressed: () {
-                // TODO: Navigate to reset password screen
-                context.pushNamed(MyRoutes.resetPassword);
-              },
+              onPressed: () => verifyEmail(context),
               backgroundColor: MyColor.highlight.darkest,
             ),
+            const VerifyEmailBlocListener(),
           ],
         ),
       ),
     );
+  }
+
+  void verifyEmail(BuildContext context) {
+    context.read<VerifyEmailCubit>().verifyEmail(widget.email, otpCode);
   }
 }

@@ -4,7 +4,7 @@ import 'package:e_shop_flutter_app/core/helpers/shared_pref_helper.dart';
 import 'package:e_shop_flutter_app/core/netowoks/api_constant.dart';
 import 'package:e_shop_flutter_app/core/netowoks/dio_factory.dart';
 import 'package:e_shop_flutter_app/features/auth/login/data/models/login_response.dart';
-import 'package:e_shop_flutter_app/features/auth/login/data/models/refresh_token_request_body.dart';
+import 'package:e_shop_flutter_app/features/auth/refresh_token/data/models/refresh_token_request_body.dart';
 
 class AuthInterceptor extends Interceptor {
   @override

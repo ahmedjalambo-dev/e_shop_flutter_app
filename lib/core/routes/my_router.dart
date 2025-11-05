@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:e_shop_flutter_app/core/di/injection.dart';
 import 'package:e_shop_flutter_app/core/routes/my_routes.dart';
 import 'package:e_shop_flutter_app/features/auth/forget_password/ui/forgot_password_screen.dart';
+import 'package:e_shop_flutter_app/features/auth/verify_email/cubit/verify_email_cubit.dart';
 import 'package:e_shop_flutter_app/features/home/home_screen.dart';
 import 'package:e_shop_flutter_app/features/auth/login/cubit/login_cubit.dart';
 import 'package:e_shop_flutter_app/features/auth/login/ui/login_screen.dart';
@@ -38,8 +41,12 @@ class MyRouter {
           builder: (context) => const ForgotPasswordScreen(),
         );
       case MyRoutes.verifyEmail:
+        final email = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) => const VerifyEmailScreen(),
+          builder: (context) => BlocProvider<VerifyEmailCubit>(
+            create: (context) => getIt<VerifyEmailCubit>(param1: email),
+            child: VerifyEmailScreen(email: email),
+          ),
         );
       case MyRoutes.resetPassword:
         return MaterialPageRoute(

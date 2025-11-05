@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: Colors.white,
             colorScheme: ColorScheme.fromSeed(
               seedColor: MyColor.highlight.darkest,
-            ),
+            ).copyWith(primary: MyColor.highlight.darkest),
           ),
           onGenerateRoute: myRouter.generateRoute,
           initialRoute: MyRoutes.login,

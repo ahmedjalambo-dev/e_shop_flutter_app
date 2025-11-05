@@ -20,11 +20,13 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> emitLoginStates() async {
     emit(const LoginState.loading());
+    
     final loginRequestBody = LoginRequestBody(
       email: emailController.text,
       password: passwordController.text,
     );
     final result = await _loginRepo.login(loginRequestBody);
+
     result.when(
       success: (loginResponse) {
         if (loginResponse.isSuccess) {

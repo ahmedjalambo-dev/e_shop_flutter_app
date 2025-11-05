@@ -6,6 +6,9 @@ import 'package:e_shop_flutter_app/features/auth/login/data/services/login_api_s
 import 'package:e_shop_flutter_app/features/auth/signup/cubit/signup_cubit.dart';
 import 'package:e_shop_flutter_app/features/auth/signup/data/repos/signup_repo.dart';
 import 'package:e_shop_flutter_app/features/auth/signup/data/services/signup_api_service.dart';
+import 'package:e_shop_flutter_app/features/auth/verify_email/cubit/verify_email_cubit.dart';
+import 'package:e_shop_flutter_app/features/auth/verify_email/data/repos/verify_email_repo.dart';
+import 'package:e_shop_flutter_app/features/auth/verify_email/data/services/verify_email_api_service.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
@@ -25,11 +28,14 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<SignupRepo>(() => SignupRepo(getIt()));
   getIt.registerFactory<SignupCubit>(() => SignupCubit(getIt()));
 
-  // // verify email
-  // getIt.registerLazySingleton(() => VerifyEmailRepo(getIt()));
-  // getIt.registerFactoryParam<VerifyEmailCubit, String, void>(
-  //   (email, _) => VerifyEmailCubit(getIt(), email),
-  // );
+  // verify email
+  getIt.registerLazySingleton<VerifyEmailApiService>(
+    () => VerifyEmailApiService(dio),
+  );
+  getIt.registerLazySingleton(() => VerifyEmailRepo(getIt()));
+  getIt.registerFactoryParam<VerifyEmailCubit, String, void>(
+    (email, _) => VerifyEmailCubit(getIt(), email),
+  );
 
   // // forgot password
   // getIt.registerLazySingleton(() => ForgotPasswordRepo(getIt()));
