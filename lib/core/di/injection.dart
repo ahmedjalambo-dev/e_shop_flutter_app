@@ -1,0 +1,57 @@
+import 'package:dio/dio.dart';
+import 'package:e_shop_flutter_app/core/netowoks/dio_factory.dart';
+import 'package:e_shop_flutter_app/features/auth/login/cubit/login_cubit.dart';
+import 'package:e_shop_flutter_app/features/auth/login/data/repos/login_repo.dart';
+import 'package:e_shop_flutter_app/features/auth/login/data/services/login_api_service.dart';
+import 'package:e_shop_flutter_app/features/auth/signup/cubit/signup_cubit.dart';
+import 'package:e_shop_flutter_app/features/auth/signup/data/repos/signup_repo.dart';
+import 'package:e_shop_flutter_app/features/auth/signup/data/services/signup_api_service.dart';
+import 'package:get_it/get_it.dart';
+
+final getIt = GetIt.instance;
+
+Future<void> setupGetIt() async {
+  // Dio & ApiService
+  Dio dio = DioFactory.getDio();
+  // getIt.registerLazySingleton<ApiService>(() => ApiService(dio));
+
+  // login
+  getIt.registerLazySingleton<LoginApiService>(() => LoginApiService(dio));
+  getIt.registerLazySingleton(() => LoginRepo(getIt()));
+  getIt.registerFactory(() => LoginCubit(getIt()));
+
+  // signup
+  getIt.registerLazySingleton<SignupApiService>(() => SignupApiService(dio));
+  getIt.registerLazySingleton<SignupRepo>(() => SignupRepo(getIt()));
+  getIt.registerFactory<SignupCubit>(() => SignupCubit(getIt()));
+
+  // // verify email
+  // getIt.registerLazySingleton(() => VerifyEmailRepo(getIt()));
+  // getIt.registerFactoryParam<VerifyEmailCubit, String, void>(
+  //   (email, _) => VerifyEmailCubit(getIt(), email),
+  // );
+
+  // // forgot password
+  // getIt.registerLazySingleton(() => ForgotPasswordRepo(getIt()));
+  // getIt.registerFactory(() => ForgotPasswordCubit(getIt()));
+
+  // // reset password
+  // getIt.registerLazySingleton(() => ResetPasswordRepo(getIt()));
+  // getIt.registerFactoryParam<ResetPasswordCubit, String, void>(
+  //   (email, _) => ResetPasswordCubit(getIt(), email),
+  // );
+
+  // // home
+  // getIt.registerLazySingleton<CategoriesService>(() => CategoriesService(dio));
+  // getIt.registerLazySingleton<CategoriesRepo>(() => CategoriesRepo(getIt()));
+
+  // getIt.registerLazySingleton<ProductsService>(() => ProductsService(dio));
+  // getIt.registerLazySingleton<ProductsRepo>(() => ProductsRepo(getIt()));
+
+  // getIt.registerFactory(() => HomeCubit(getIt(), getIt()));
+
+  // // Add Cart
+  // getIt.registerLazySingleton<CartService>(() => CartService(dio));
+  // getIt.registerLazySingleton<CartRepo>(() => CartRepo(getIt()));
+  // getIt.registerFactory<CartCubit>(() => CartCubit(getIt()));
+}
