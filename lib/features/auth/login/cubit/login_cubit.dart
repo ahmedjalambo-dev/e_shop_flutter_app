@@ -27,8 +27,9 @@ class LoginCubit extends Cubit<LoginState> {
     final result = await _loginRepo.login(loginRequestBody);
 
     result.when(
-      success: (loginResponse) {
+      success: (loginResponse) async {
         if (loginResponse.isSuccess) {
+          await saveUserTokens(loginResponse);
           emit(LoginState.success(loginResponse.accessToken!));
         } else {
           // Handle error response
@@ -49,13 +50,13 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   Future<void> saveUserTokens(LoginResponse loginResponse) async {
-    await SharedPrefHelper.setData(
+    await SharedPrefHelper.setSecuredString(
       SharedPrefKeys.accessToken,
-      loginResponse.accessToken,
+      loginResponse.accessToken!,
     );
-    await SharedPrefHelper.setData(
+    await SharedPrefHelper.setSecuredString(
       SharedPrefKeys.refreshToken,
-      loginResponse.refreshToken,
+      loginResponse.refreshToken!,
     );
   }
 }
