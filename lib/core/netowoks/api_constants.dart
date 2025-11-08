@@ -1,4 +1,4 @@
-class ApiConstant {
+class ApiConstants {
   static const String baseUrl = 'https://accessories-eshop.runasp.net/';
   static const String login = 'api/auth/login';
   static const String signup = 'api/auth/register';

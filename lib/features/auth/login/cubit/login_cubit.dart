@@ -1,7 +1,6 @@
 import 'package:e_shop_flutter_app/core/cache/shared_pref_keys.dart';
 import 'package:e_shop_flutter_app/core/helpers/shared_pref_helper.dart';
 import 'package:e_shop_flutter_app/core/netowoks/api_result.dart';
-import 'package:e_shop_flutter_app/core/netowoks/dio_factory.dart';
 import 'package:e_shop_flutter_app/features/auth/login/cubit/login_state.dart';
 import 'package:e_shop_flutter_app/features/auth/login/data/models/login_response.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +19,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> emitLoginStates() async {
     emit(const LoginState.loading());
-    
+
     final loginRequestBody = LoginRequestBody(
       email: emailController.text,
       password: passwordController.text,
@@ -54,6 +53,9 @@ class LoginCubit extends Cubit<LoginState> {
       SharedPrefKeys.accessToken,
       loginResponse.accessToken,
     );
-    DioFactory.setTokenIntoHeader(loginResponse.accessToken!);
+    await SharedPrefHelper.setData(
+      SharedPrefKeys.refreshToken,
+      loginResponse.refreshToken,
+    );
   }
 }
