@@ -1,3 +1,5 @@
+import 'package:e_shop_flutter_app/core/cache/shared_pref_keys.dart';
+import 'package:e_shop_flutter_app/core/helpers/shared_pref_helper.dart';
 import 'package:e_shop_flutter_app/core/routes/my_router.dart';
 import 'package:e_shop_flutter_app/core/routes/my_routes.dart';
 import 'package:e_shop_flutter_app/core/themes/my_colors.dart';
@@ -7,8 +9,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyApp extends StatelessWidget {
   final MyRouter myRouter;
+  final bool isLoggedIn;
 
-  const MyApp({super.key, required this.myRouter});
+  const MyApp({super.key, required this.myRouter, required this.isLoggedIn});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +29,7 @@ class MyApp extends StatelessWidget {
             ).copyWith(primary: MyColor.highlight.darkest),
           ),
           onGenerateRoute: myRouter.generateRoute,
-          initialRoute: MyRoutes.login,
+          initialRoute: isLoggedIn ? MyRoutes.home : MyRoutes.login,
         );
       },
     );

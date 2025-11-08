@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:e_shop_flutter_app/core/di/injection.dart';
 import 'package:e_shop_flutter_app/core/routes/my_routes.dart';
 import 'package:e_shop_flutter_app/features/auth/forget_password/ui/forgot_password_screen.dart';
