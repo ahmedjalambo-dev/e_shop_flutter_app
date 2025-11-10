@@ -35,7 +35,7 @@ class SignupScreen extends StatelessWidget {
                     Text(
                       'Create an account to get started',
                       style: MyTextStyle.body.s.copyWith(
-                        color: MyColor.neutral.dark.light,
+                        color: MyColors.neutral.dark.light,
                       ),
                     ),
                     const VerticalSpace(24),
@@ -44,13 +44,13 @@ class SignupScreen extends StatelessWidget {
                     MyTextButton(
                       text: 'Signup',
                       textStyle: MyTextStyle.action.m.copyWith(
-                        color: MyColor.neutral.light.lightest,
+                        color: MyColors.neutral.light.lightest,
                       ),
                       onPressed: () {
                         // signup
                         signup(context);
                       },
-                      backgroundColor: MyColor.highlight.darkest,
+                      backgroundColor: MyColors.highlight.darkest,
                     ),
                     const SignupBlocListener(),
                     const VerticalSpace(16),

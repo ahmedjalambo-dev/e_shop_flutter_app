@@ -13,12 +13,14 @@ class DontHaveAnAccountSignup extends StatelessWidget {
       child: Text.rich(
         TextSpan(
           text: 'Don\'t have an account? ',
-          style: MyTextStyle.body.s.copyWith(color: MyColor.neutral.dark.light),
+          style: MyTextStyle.body.s.copyWith(
+            color: MyColors.neutral.dark.light,
+          ),
           children: <TextSpan>[
             TextSpan(
               text: 'Signup',
               style: MyTextStyle.action.m.copyWith(
-                color: MyColor.highlight.darkest,
+                color: MyColors.highlight.darkest,
               ),
               recognizer: TapGestureRecognizer()..onTap = onTap,
             ),

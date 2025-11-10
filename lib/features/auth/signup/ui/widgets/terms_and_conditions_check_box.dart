@@ -48,7 +48,7 @@ class _TermsAndConditionsCheckboxState
       children: [
         Checkbox(
           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          activeColor: MyColor.highlight.dark,
+          activeColor: MyColors.highlight.dark,
           value: _isChecked,
           onChanged: (bool? newValue) =>
               setState(() => _isChecked = newValue ?? false),
@@ -56,7 +56,7 @@ class _TermsAndConditionsCheckboxState
             borderRadius: BorderRadius.circular(6.0.dg),
             side: const BorderSide(width: 24),
           ),
-          side: BorderSide(width: 1.5, color: MyColor.neutral.light.darkest),
+          side: BorderSide(width: 1.5, color: MyColors.neutral.light.darkest),
         ),
         const HorizontalSpace(12),
         Flexible(
@@ -64,26 +64,26 @@ class _TermsAndConditionsCheckboxState
             TextSpan(
               text: "I've read and agree with the ",
               style: MyTextStyle.body.s.copyWith(
-                color: MyColor.neutral.dark.light,
+                color: MyColors.neutral.dark.light,
               ),
               children: [
                 TextSpan(
                   text: 'Terms and Conditions',
                   style: MyTextStyle.action.m.copyWith(
-                    color: MyColor.highlight.darkest,
+                    color: MyColors.highlight.darkest,
                   ),
                   recognizer: _termsRecognizer,
                 ),
                 TextSpan(
                   text: ' and the ',
                   style: MyTextStyle.body.s.copyWith(
-                    color: MyColor.neutral.dark.light,
+                    color: MyColors.neutral.dark.light,
                   ),
                 ),
                 TextSpan(
                   text: 'Privacy Policy',
                   style: MyTextStyle.action.m.copyWith(
-                    color: MyColor.highlight.darkest,
+                    color: MyColors.highlight.darkest,
                   ),
                   recognizer: _privacyRecognizer,
                 ),

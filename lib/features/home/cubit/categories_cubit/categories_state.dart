@@ -6,4 +6,8 @@ part 'categories_state.freezed.dart';
 @freezed
 class CategoriesState with _$CategoriesState {
   const factory CategoriesState.initial() = _Initial;
+  const factory CategoriesState.loading() = Loading;
+  const factory CategoriesState.success(CategoriesResponse categoriesResponse) =
+      Success;
+  const factory CategoriesState.failure(String message) = Failure;
 }

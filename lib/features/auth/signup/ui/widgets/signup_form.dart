@@ -46,10 +46,10 @@ class _SignupFormState extends State<SignupForm> {
               return null;
             },
             hintStyle: MyTextStyle.body.m.copyWith(
-              color: MyColor.neutral.dark.light,
+              color: MyColors.neutral.dark.light,
             ),
             inputTextStyle: MyTextStyle.body.m.copyWith(
-              color: MyColor.neutral.dark.darkest,
+              color: MyColors.neutral.dark.darkest,
             ),
           ),
           const VerticalSpace(16),
@@ -61,10 +61,10 @@ class _SignupFormState extends State<SignupForm> {
               return null;
             },
             hintStyle: MyTextStyle.body.m.copyWith(
-              color: MyColor.neutral.dark.light,
+              color: MyColors.neutral.dark.light,
             ),
             inputTextStyle: MyTextStyle.body.m.copyWith(
-              color: MyColor.neutral.dark.darkest,
+              color: MyColors.neutral.dark.darkest,
             ),
           ),
           const VerticalSpace(16),
@@ -76,10 +76,10 @@ class _SignupFormState extends State<SignupForm> {
               return null;
             },
             hintStyle: MyTextStyle.body.m.copyWith(
-              color: MyColor.neutral.dark.light,
+              color: MyColors.neutral.dark.light,
             ),
             inputTextStyle: MyTextStyle.body.m.copyWith(
-              color: MyColor.neutral.dark.darkest,
+              color: MyColors.neutral.dark.darkest,
             ),
           ),
           const VerticalSpace(16),

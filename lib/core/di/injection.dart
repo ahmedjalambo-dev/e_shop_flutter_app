@@ -9,6 +9,9 @@ import 'package:e_shop_flutter_app/features/auth/signup/data/services/signup_api
 import 'package:e_shop_flutter_app/features/auth/verify_email/cubit/verify_email_cubit.dart';
 import 'package:e_shop_flutter_app/features/auth/verify_email/data/repos/verify_email_repo.dart';
 import 'package:e_shop_flutter_app/features/auth/verify_email/data/services/verify_email_api_service.dart';
+import 'package:e_shop_flutter_app/features/home/cubit/categories_cubit/categories_cubit.dart';
+import 'package:e_shop_flutter_app/features/home/data/repos/categories_repo.dart';
+import 'package:e_shop_flutter_app/features/home/data/services/categories_api_service.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
@@ -47,9 +50,12 @@ Future<void> setupGetIt() async {
   //   (email, _) => ResetPasswordCubit(getIt(), email),
   // );
 
-  // // home
-  // getIt.registerLazySingleton<CategoriesService>(() => CategoriesService(dio));
-  // getIt.registerLazySingleton<CategoriesRepo>(() => CategoriesRepo(getIt()));
+  // home
+  getIt.registerLazySingleton<CategoriesApiService>(
+    () => CategoriesApiService(dio),
+  );
+  getIt.registerLazySingleton<CategoriesRepo>(() => CategoriesRepo(getIt()));
+  getIt.registerFactory<CategoriesCubit>(() => CategoriesCubit(getIt()));
 
   // getIt.registerLazySingleton<ProductsService>(() => ProductsService(dio));
   // getIt.registerLazySingleton<ProductsRepo>(() => ProductsRepo(getIt()));

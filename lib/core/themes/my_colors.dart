@@ -11,9 +11,9 @@ import 'package:flutter/material.dart';
 ///   color: MyColor.Highlight.dark,
 /// )
 /// ```
-class MyColor {
+class MyColors {
   // Private constructor to prevent instantiation.
-  MyColor._();
+  MyColors._();
 
   /// The 'Highlight' color group.
   static const AppHighlightColors highlight = AppHighlightColors._();

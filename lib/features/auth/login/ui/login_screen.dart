@@ -45,7 +45,7 @@ class LoginScreen extends StatelessWidget {
                       'Forgot Password?',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: MyColor.highlight.darkest,
+                        color: MyColors.highlight.darkest,
                       ),
                     ),
                   ),
@@ -53,13 +53,13 @@ class LoginScreen extends StatelessWidget {
                   MyTextButton(
                     text: 'Login',
                     textStyle: MyTextStyle.action.m.copyWith(
-                      color: MyColor.neutral.light.lightest,
+                      color: MyColors.neutral.light.lightest,
                     ),
                     onPressed: () {
                       // login
                       login(context);
                     },
-                    backgroundColor: MyColor.highlight.darkest,
+                    backgroundColor: MyColors.highlight.darkest,
                   ),
                   const LoginBlocListener(),
                   const VerticalSpace(16),

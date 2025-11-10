@@ -34,7 +34,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
             Text(
               'A 6-digit code was sent to\n${widget.email}',
               style: MyTextStyle.body.s.copyWith(
-                color: MyColor.neutral.dark.light,
+                color: MyColors.neutral.dark.light,
               ),
             ),
             const VerticalSpace(24),
@@ -63,7 +63,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                 'Resend Code',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: MyColor.highlight.darkest,
+                  color: MyColors.highlight.darkest,
                 ),
               ),
             ),
@@ -71,10 +71,10 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
             MyTextButton(
               text: 'Verify',
               textStyle: MyTextStyle.action.m.copyWith(
-                color: MyColor.neutral.light.lightest,
+                color: MyColors.neutral.light.lightest,
               ),
               onPressed: () => verifyEmail(context),
-              backgroundColor: MyColor.highlight.darkest,
+              backgroundColor: MyColors.highlight.darkest,
             ),
             const VerifyEmailBlocListener(),
           ],

@@ -39,10 +39,10 @@ class _LoginFormState extends State<LoginForm> {
               return null;
             },
             hintStyle: MyTextStyle.body.m.copyWith(
-              color: MyColor.neutral.dark.light,
+              color: MyColors.neutral.dark.light,
             ),
             inputTextStyle: MyTextStyle.body.m.copyWith(
-              color: MyColor.neutral.dark.darkest,
+              color: MyColors.neutral.dark.darkest,
             ),
           ),
           const VerticalSpace(16),

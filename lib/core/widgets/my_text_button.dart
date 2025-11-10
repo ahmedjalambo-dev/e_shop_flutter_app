@@ -51,7 +51,7 @@ class MyTextButton extends StatelessWidget {
           style:
               textStyle ??
               MyTextStyle.action.m.copyWith(
-                color: MyColor.neutral.light.lightest,
+                color: MyColors.neutral.light.lightest,
               ),
         ),
       ),

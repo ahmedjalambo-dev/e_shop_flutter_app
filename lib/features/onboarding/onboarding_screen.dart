@@ -41,7 +41,7 @@ class OnboardingScreen extends StatelessWidget {
                 context.pushReplacementNamed(MyRoutes.login);
               }
             },
-            backgroundColor: MyColor.highlight.darkest,
+            backgroundColor: MyColors.highlight.darkest,
             horizontalPadding: 24.w,
           ),
         ],

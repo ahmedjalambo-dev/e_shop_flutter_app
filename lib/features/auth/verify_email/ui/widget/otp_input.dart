@@ -100,22 +100,22 @@ class _OtpInputWidgetState extends State<OtpInputWidget> {
           keyboardType: TextInputType.number,
           maxLength: 1,
           style: MyTextStyle.body.m.copyWith(
-            color: MyColor.neutral.dark.darkest,
+            color: MyColors.neutral.dark.darkest,
           ),
-          cursorColor: MyColor.highlight.darkest,
+          cursorColor: MyColors.highlight.darkest,
           decoration: InputDecoration(
             counterText: '',
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: MyColor.neutral.light.darkest,
+                color: MyColors.neutral.light.darkest,
                 width: 1.5,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: MyColor.highlight.darkest,
+                color: MyColors.highlight.darkest,
                 width: 1.5,
               ),
             ),

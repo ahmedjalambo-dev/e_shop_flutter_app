@@ -23,7 +23,7 @@ class ForgotPasswordScreen extends StatelessWidget {
             Text(
               'Enter your email and we\'ll send you OTP to reset your password',
               style: MyTextStyle.body.s.copyWith(
-                color: MyColor.neutral.dark.light,
+                color: MyColors.neutral.dark.light,
               ),
             ),
             const VerticalSpace(24),
@@ -35,10 +35,10 @@ class ForgotPasswordScreen extends StatelessWidget {
                 return null;
               },
               hintStyle: MyTextStyle.body.m.copyWith(
-                color: MyColor.neutral.dark.light,
+                color: MyColors.neutral.dark.light,
               ),
               inputTextStyle: MyTextStyle.body.m.copyWith(
-                color: MyColor.neutral.dark.darkest,
+                color: MyColors.neutral.dark.darkest,
               ),
             ),
 
@@ -46,7 +46,7 @@ class ForgotPasswordScreen extends StatelessWidget {
             MyTextButton(
               text: 'Send',
               textStyle: MyTextStyle.action.m.copyWith(
-                color: MyColor.neutral.light.lightest,
+                color: MyColors.neutral.light.lightest,
               ),
               onPressed: () {
                 // TODO: Navigate to validate OTP screen with eamil address value
@@ -55,7 +55,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                   predicate: (route) => false,
                 );
               },
-              backgroundColor: MyColor.highlight.darkest,
+              backgroundColor: MyColors.highlight.darkest,
             ),
           ],
         ),

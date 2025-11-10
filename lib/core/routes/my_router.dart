@@ -2,7 +2,8 @@ import 'package:e_shop_flutter_app/core/di/injection.dart';
 import 'package:e_shop_flutter_app/core/routes/my_routes.dart';
 import 'package:e_shop_flutter_app/features/auth/forget_password/ui/forgot_password_screen.dart';
 import 'package:e_shop_flutter_app/features/auth/verify_email/cubit/verify_email_cubit.dart';
-import 'package:e_shop_flutter_app/features/home/home_screen.dart';
+import 'package:e_shop_flutter_app/features/home/cubit/categories_cubit/categories_cubit.dart';
+import 'package:e_shop_flutter_app/features/home/ui/home_screen.dart';
 import 'package:e_shop_flutter_app/features/auth/login/cubit/login_cubit.dart';
 import 'package:e_shop_flutter_app/features/auth/login/ui/login_screen.dart';
 import 'package:e_shop_flutter_app/features/onboarding/onboarding_screen.dart';
@@ -52,9 +53,11 @@ class MyRouter {
         );
 
       case MyRoutes.home:
-        final String firstName = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) => HomeScreen(firstName: firstName),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<CategoriesCubit>(),
+            child: const HomeScreen(),
+          ),
         );
       default:
         return null;

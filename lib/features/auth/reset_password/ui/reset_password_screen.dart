@@ -23,7 +23,7 @@ class ResetPasswordScreen extends StatelessWidget {
             Text(
               'Please enter your new password below.',
               style: MyTextStyle.body.s.copyWith(
-                color: MyColor.neutral.dark.light,
+                color: MyColors.neutral.dark.light,
               ),
             ),
             const VerticalSpace(24),
@@ -32,10 +32,10 @@ class ResetPasswordScreen extends StatelessWidget {
               hintText: 'New Password',
               controller: TextEditingController(),
               hintStyle: MyTextStyle.body.m.copyWith(
-                color: MyColor.neutral.dark.light,
+                color: MyColors.neutral.dark.light,
               ),
               inputTextStyle: MyTextStyle.body.m.copyWith(
-                color: MyColor.neutral.dark.darkest,
+                color: MyColors.neutral.dark.darkest,
               ),
               isObscureText: true,
               suffixIcon: const Icon(Icons.visibility_off, size: 16),
@@ -45,7 +45,7 @@ class ResetPasswordScreen extends StatelessWidget {
             MyTextButton(
               text: 'Submit',
               textStyle: MyTextStyle.action.m.copyWith(
-                color: MyColor.neutral.light.lightest,
+                color: MyColors.neutral.light.lightest,
               ),
               onPressed: () {
                 // TODO: Navigate to validate OTP screen with eamil address value
@@ -54,7 +54,7 @@ class ResetPasswordScreen extends StatelessWidget {
                   predicate: (route) => false,
                 );
               },
-              backgroundColor: MyColor.highlight.darkest,
+              backgroundColor: MyColors.highlight.darkest,
             ),
           ],
         ),

@@ -29,8 +29,8 @@ class MyApp extends StatelessWidget {
             fontFamily: kFontFamily,
             scaffoldBackgroundColor: Colors.white,
             colorScheme: ColorScheme.fromSeed(
-              seedColor: MyColor.highlight.darkest,
-            ).copyWith(primary: MyColor.highlight.darkest),
+              seedColor: MyColors.highlight.darkest,
+            ).copyWith(primary: MyColors.highlight.darkest),
           ),
           onGenerateRoute: myRouter.generateRoute,
           initialRoute: isFirstTime

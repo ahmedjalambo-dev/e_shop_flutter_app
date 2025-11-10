@@ -29,7 +29,7 @@ class OnboardingContent extends StatelessWidget {
               Text(
                 'Enjoy these pre-made components and worry only about creating the best product ever.',
                 style: MyTextStyle.body.s.copyWith(
-                  color: MyColor.neutral.dark.light,
+                  color: MyColors.neutral.dark.light,
                 ),
               ),
             ],

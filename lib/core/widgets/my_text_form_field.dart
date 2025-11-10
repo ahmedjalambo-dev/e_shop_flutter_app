@@ -46,7 +46,7 @@ class MyTextFormField extends StatelessWidget {
             focusedBorder ??
             OutlineInputBorder(
               borderSide: BorderSide(
-                color: MyColor.highlight.darkest,
+                color: MyColors.highlight.darkest,
                 width: 1.5,
               ),
               borderRadius: BorderRadius.circular(12.dg),
@@ -54,15 +54,15 @@ class MyTextFormField extends StatelessWidget {
         enabledBorder:
             enabledBorder ??
             OutlineInputBorder(
-              borderSide: BorderSide(color: MyColor.neutral.light.darkest),
+              borderSide: BorderSide(color: MyColors.neutral.light.darkest),
               borderRadius: BorderRadius.circular(12.dg),
             ),
         errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: MyColor.support.error.medium),
+          borderSide: BorderSide(color: MyColors.support.error.medium),
           borderRadius: BorderRadius.circular(12.dg),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: MyColor.support.error.medium),
+          borderSide: BorderSide(color: MyColors.support.error.medium),
           borderRadius: BorderRadius.circular(12.dg),
         ),
 
@@ -70,16 +70,16 @@ class MyTextFormField extends StatelessWidget {
         hintStyle: MyTextStyle.body.m,
 
         suffixIcon: suffixIcon,
-        suffixIconColor: MyColor.neutral.dark.lightest,
+        suffixIconColor: MyColors.neutral.dark.lightest,
 
-        fillColor: MyColor.neutral.light.lightest,
+        fillColor: MyColors.neutral.light.lightest,
         filled: true,
-        hoverColor: MyColor.highlight.darkest,
+        hoverColor: MyColors.highlight.darkest,
       ),
 
       obscureText: isObscureText ?? false,
       style: MyTextStyle.body.m,
-      cursorColor: MyColor.highlight.darkest,
+      cursorColor: MyColors.highlight.darkest,
     );
   }
 }
