@@ -13,7 +13,7 @@ class LoginBlocListener extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
       listenWhen: (previous, current) =>
-          current is Loading || current is Success || current is Error,
+          current is Loading || current is Success || current is Failure,
       listener: (context, state) {
         state.whenOrNull(
           loading: () {
@@ -33,7 +33,7 @@ class LoginBlocListener extends StatelessWidget {
               predicate: (route) => false,
             );
           },
-          error: (message) {
+          failure: (message) {
             // Close loading dialog if it's open
             Navigator.of(context).pop();
 

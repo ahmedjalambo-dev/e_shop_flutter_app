@@ -50,8 +50,12 @@ class MyRouter {
         return MaterialPageRoute(
           builder: (context) => const ResetPasswordScreen(),
         );
+
       case MyRoutes.home:
-        return MaterialPageRoute(builder: (context) => const HomeScreen());
+        final String firstName = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (context) => HomeScreen(firstName: firstName),
+        );
       default:
         return null;
     }

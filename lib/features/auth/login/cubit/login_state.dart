@@ -7,5 +7,5 @@ class LoginState with _$LoginState {
   const factory LoginState.initial() = _Initial;
   const factory LoginState.loading() = Loading;
   const factory LoginState.success(String accessToken) = Success;
-  const factory LoginState.error(String message) = Error;
+  const factory LoginState.failure(String message) = Failure;
 }
