@@ -12,5 +12,14 @@ void main() async {
     SharedPrefKeys.accessToken,
   );
   final bool isLoggedIn = accessToken != null && accessToken.isNotEmpty;
-  runApp(MyApp(myRouter: MyRouter(), isLoggedIn: isLoggedIn));
+  final bool isFirstTime =
+      await SharedPrefHelper.getBool(SharedPrefKeys.isFirstTime) ?? true;
+
+  runApp(
+    MyApp(
+      myRouter: MyRouter(),
+      isLoggedIn: isLoggedIn,
+      isFirstTime: isFirstTime,
+    ),
+  );
 }
