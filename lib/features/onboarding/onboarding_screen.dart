@@ -1,6 +1,6 @@
 import 'package:e_shop_flutter_app/core/cache/shared_pref_keys.dart';
 import 'package:e_shop_flutter_app/core/extentions/extentions.dart';
-import 'package:e_shop_flutter_app/core/helpers/shared_pref_helper.dart';
+import 'package:e_shop_flutter_app/core/db/shared_pref_helper.dart';
 import 'package:e_shop_flutter_app/core/routes/my_routes.dart';
 import 'package:e_shop_flutter_app/core/themes/my_colors.dart';
 import 'package:e_shop_flutter_app/core/widgets/my_text_button.dart';

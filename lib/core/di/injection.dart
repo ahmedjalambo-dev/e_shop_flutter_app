@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:e_shop_flutter_app/core/db/database_helper.dart';
 import 'package:e_shop_flutter_app/core/netowoks/dio_factory.dart';
 import 'package:e_shop_flutter_app/features/auth/login/cubit/login_cubit.dart';
 import 'package:e_shop_flutter_app/features/auth/login/data/repos/login_repo.dart';
@@ -9,6 +10,8 @@ import 'package:e_shop_flutter_app/features/auth/signup/data/services/signup_api
 import 'package:e_shop_flutter_app/features/auth/verify_email/cubit/verify_email_cubit.dart';
 import 'package:e_shop_flutter_app/features/auth/verify_email/data/repos/verify_email_repo.dart';
 import 'package:e_shop_flutter_app/features/auth/verify_email/data/services/verify_email_api_service.dart';
+import 'package:e_shop_flutter_app/features/favorite/cubit/favorite_cubit.dart';
+import 'package:e_shop_flutter_app/features/favorite/data/repos/favorite_repo.dart';
 import 'package:e_shop_flutter_app/features/home/cubit/categories_cubit.dart';
 import 'package:e_shop_flutter_app/features/home/cubit/products_cubit.dart';
 import 'package:e_shop_flutter_app/features/home/data/repos/categories_repo.dart';
@@ -65,6 +68,16 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<ProductsRepo>(() => ProductsRepo(getIt()));
   getIt.registerFactory<ProductsCubit>(() => ProductsCubit(getIt()));
 
+  // sqflite DB
+  // Register DatabaseHelper as a singleton
+  getIt.registerSingleton<DatabaseHelper>(DatabaseHelper());
+  // Favorite (Local DB)
+  getIt.registerLazySingleton<FavoriteRepo>(
+    () => FavoriteRepo(getIt<DatabaseHelper>()),
+  );
+  getIt.registerLazySingleton<FavoriteCubit>(
+    () => FavoriteCubit(getIt<FavoriteRepo>()),
+  );
 
   // // Add Cart
   // getIt.registerLazySingleton<CartService>(() => CartService(dio));

@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:e_shop_flutter_app/core/cache/shared_pref_keys.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-import '../helpers/shared_pref_helper.dart';
+import '../db/shared_pref_helper.dart';
 import 'api_constants.dart';
 
 class DioFactory {

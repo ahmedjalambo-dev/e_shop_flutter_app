@@ -2,6 +2,8 @@ import 'package:e_shop_flutter_app/core/di/injection.dart';
 import 'package:e_shop_flutter_app/core/themes/my_colors.dart';
 import 'package:e_shop_flutter_app/core/themes/my_text_style.dart';
 import 'package:e_shop_flutter_app/core/widgets/my_drawer.dart';
+import 'package:e_shop_flutter_app/features/favorite/cubit/favorite_cubit.dart';
+import 'package:e_shop_flutter_app/features/favorite/ui/favorite_screen.dart';
 import 'package:e_shop_flutter_app/features/home/cubit/categories_cubit.dart';
 import 'package:e_shop_flutter_app/features/home/cubit/products_cubit.dart';
 import 'package:e_shop_flutter_app/features/home/ui/home_screen.dart';
@@ -37,7 +39,7 @@ class _MyRootState extends State<MyRoot> {
       child: const HomeScreen(),
     ),
     const Text('Cart', style: optionStyle),
-    const Text('Favorite', style: optionStyle),
+    const FavoriteScreen(),
   ];
 
   @override
@@ -73,8 +75,8 @@ class _MyRootState extends State<MyRoot> {
               iconSize: 24,
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               duration: const Duration(milliseconds: 400),
-              tabBackgroundColor: MyColors.highlight.light,
-              color: MyColors.neutral.light.darkest,
+              tabBackgroundColor: MyColors.highlight.lightest,
+              color: MyColors.neutral.light.dark,
               tabs: [
                 GButton(
                   icon: Icons.home_filled,
@@ -83,8 +85,9 @@ class _MyRootState extends State<MyRoot> {
                     color: MyColors.highlight.darkest,
                   ),
                 ),
+
                 GButton(
-                  icon: CupertinoIcons.bag_fill,
+                  icon: Icons.shopping_bag_rounded,
                   text: 'Cart',
                   textStyle: MyTextStyle.heading.h5.copyWith(
                     color: MyColors.highlight.darkest,

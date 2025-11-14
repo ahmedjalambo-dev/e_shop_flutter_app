@@ -29,7 +29,7 @@ class LoginBlocListener extends StatelessWidget {
             Navigator.of(context).pop();
             // Navigate to home screen
             context.pushNamedAndRemoveUntil(
-              MyRoutes.home,
+              MyRoutes.root,
               predicate: (route) => false,
             );
           },

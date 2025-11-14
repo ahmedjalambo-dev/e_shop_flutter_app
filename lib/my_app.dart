@@ -2,7 +2,6 @@ import 'package:e_shop_flutter_app/core/routes/my_router.dart';
 import 'package:e_shop_flutter_app/core/routes/my_routes.dart';
 import 'package:e_shop_flutter_app/core/themes/my_colors.dart';
 import 'package:e_shop_flutter_app/core/themes/my_text_style.dart';
-import 'package:e_shop_flutter_app/my_root.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -2,6 +2,7 @@ import 'package:e_shop_flutter_app/core/di/injection.dart';
 import 'package:e_shop_flutter_app/core/routes/my_routes.dart';
 import 'package:e_shop_flutter_app/features/auth/forget_password/ui/forgot_password_screen.dart';
 import 'package:e_shop_flutter_app/features/auth/verify_email/cubit/verify_email_cubit.dart';
+import 'package:e_shop_flutter_app/features/favorite/cubit/favorite_cubit.dart';
 import 'package:e_shop_flutter_app/features/home/cubit/categories_cubit.dart';
 import 'package:e_shop_flutter_app/features/home/cubit/products_cubit.dart';
 import 'package:e_shop_flutter_app/features/home/ui/home_screen.dart';
@@ -54,7 +55,12 @@ class MyRouter {
           builder: (context) => const ResetPasswordScreen(),
         );
       case MyRoutes.root:
-        return MaterialPageRoute(builder: (context) => const MyRoot());
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<FavoriteCubit>(),
+            child: const MyRoot(),
+          ),
+        );
       case MyRoutes.home:
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(

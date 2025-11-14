@@ -3,7 +3,6 @@ import 'package:e_shop_flutter_app/core/themes/my_text_style.dart';
 import 'package:e_shop_flutter_app/core/widgets/spacing_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
@@ -25,7 +24,7 @@ class _MyDrawerState extends State<MyDrawer> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildProfileInfoRow(),
+            _buildAppLogo(),
             Expanded(
               child: ListView(
                 padding: EdgeInsets.zero,
@@ -67,13 +66,7 @@ class _MyDrawerState extends State<MyDrawer> {
                       Navigator.pop(context);
                     },
                   ),
-                  _buildMenuItem(
-                    icon: Icons.favorite_border,
-                    title: 'Wishlist',
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                  ),
+
                   _buildMenuItem(
                     icon: Icons.settings_outlined,
                     title: 'Settings',
@@ -101,27 +94,12 @@ class _MyDrawerState extends State<MyDrawer> {
     );
   }
 
-  Widget _buildProfileInfoRow() {
+  Widget _buildAppLogo() {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Profile info row
-          // Row(
-          //   children: [
-          //     // Profile Picture
-          //     const CircleAvatar(
-          //       radius: 24,
-          //       backgroundImage: NetworkImage(
-          //         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_R2SBa_HY3-SDok8d6qfgujQFK6tJbvLxHtkRs4mjTJC-qIvRH8_aMLnFwfPbrfFoCss&usqp=CAU',
-          //       ), // Placeholder image
-          //     ),
-          //     const HorizontalSpace(12),
-          //     // Name and Verified Status
-          //     Text('Ahmed Jalambo', style: MyTextStyle.heading.h2),
-          //   ],
-          // ),
           Row(
             children: [
               Icon(
@@ -130,7 +108,10 @@ class _MyDrawerState extends State<MyDrawer> {
                 size: 40,
               ),
               const HorizontalSpace(12),
-              Text('eShop', style: MyTextStyle.body.xl),
+              Text(
+                'ESHOP',
+                style: MyTextStyle.body.xl.copyWith(wordSpacing: 1),
+              ),
             ],
           ),
           const Divider(),

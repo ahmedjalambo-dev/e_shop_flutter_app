@@ -16,7 +16,7 @@ ProductsRequestBody _$ProductsRequestBodyFromJson(Map<String, dynamic> json) =>
       sortBy: json['sortBy'] as String? ?? '',
       sortOrder: json['sortOrder'] as String? ?? 'asc',
       page: (json['page'] as num?)?.toInt() ?? 1,
-      pageSize: (json['pageSize'] as num?)?.toInt() ?? 20,
+      pageSize: (json['pageSize'] as num?)?.toInt() ?? 100,
     );
 
 Map<String, dynamic> _$ProductsRequestBodyToJson(

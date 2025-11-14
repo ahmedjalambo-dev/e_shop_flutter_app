@@ -1,6 +1,6 @@
 import 'package:e_shop_flutter_app/core/cache/shared_pref_keys.dart';
 import 'package:e_shop_flutter_app/core/di/injection.dart';
-import 'package:e_shop_flutter_app/core/helpers/shared_pref_helper.dart';
+import 'package:e_shop_flutter_app/core/db/shared_pref_helper.dart';
 import 'package:e_shop_flutter_app/core/routes/my_router.dart';
 import 'package:e_shop_flutter_app/my_app.dart';
 import 'package:flutter/material.dart';
