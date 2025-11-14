@@ -13,12 +13,15 @@ class CategoryCard extends StatelessWidget {
       height: 60.h,
       width: 120.w,
       decoration: BoxDecoration(
-        color: MyColors.neutral.light.medium,
+        color: MyColors.highlight.light,
         borderRadius: BorderRadius.circular(12.dg),
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: SvgPicture.network(brandLogoUrl),
+        child: SvgPicture.network(
+          brandLogoUrl,
+          color: MyColors.highlight.darkest,
+        ),
       ),
     );
   }

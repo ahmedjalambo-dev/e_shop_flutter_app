@@ -3,6 +3,7 @@ import 'package:e_shop_flutter_app/core/themes/my_text_style.dart';
 import 'package:e_shop_flutter_app/core/widgets/spacing_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
@@ -16,6 +17,9 @@ class _MyDrawerState extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.zero),
+      ),
       backgroundColor: Colors.white,
       child: SafeArea(
         child: Column(
@@ -104,20 +108,32 @@ class _MyDrawerState extends State<MyDrawer> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Profile info row
+          // Row(
+          //   children: [
+          //     // Profile Picture
+          //     const CircleAvatar(
+          //       radius: 24,
+          //       backgroundImage: NetworkImage(
+          //         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_R2SBa_HY3-SDok8d6qfgujQFK6tJbvLxHtkRs4mjTJC-qIvRH8_aMLnFwfPbrfFoCss&usqp=CAU',
+          //       ), // Placeholder image
+          //     ),
+          //     const HorizontalSpace(12),
+          //     // Name and Verified Status
+          //     Text('Ahmed Jalambo', style: MyTextStyle.heading.h2),
+          //   ],
+          // ),
           Row(
             children: [
-              // Profile Picture
-              const CircleAvatar(
-                radius: 24,
-                backgroundImage: NetworkImage(
-                  'https://i.pravatar.cc/150?img=12',
-                ), // Placeholder image
+              Icon(
+                Icons.shopping_cart_checkout_outlined,
+                color: MyColors.highlight.darkest,
+                size: 40,
               ),
               const HorizontalSpace(12),
-              // Name and Verified Status
-              Text('Ahmed Jalambo', style: MyTextStyle.heading.h2),
+              Text('eShop', style: MyTextStyle.body.xl),
             ],
           ),
+          const Divider(),
         ],
       ),
     );
@@ -129,11 +145,6 @@ class _MyDrawerState extends State<MyDrawer> {
     required VoidCallback onTap,
     Color? color, // Optional color for icon and text
   }) {
-    final itemColor = color ?? Colors.grey[700];
-    return ListTile(
-      leading: Icon(icon, color: itemColor),
-      title: Text(title, style: TextStyle(color: color)),
-      onTap: onTap,
-    );
+    return ListTile(leading: Icon(icon), title: Text(title), onTap: onTap);
   }
 }

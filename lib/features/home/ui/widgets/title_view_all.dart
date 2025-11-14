@@ -13,7 +13,7 @@ class TitleSeeMore extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(title, style: MyTextStyle.heading.h4),
+          Text(title, style: MyTextStyle.heading.h3),
           TextButton(
             onPressed: onPressed,
             child: Text('View All', style: MyTextStyle.action.m),

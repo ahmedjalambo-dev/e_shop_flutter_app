@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             fontFamily: kFontFamily,
             scaffoldBackgroundColor: Colors.white,
+            appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
             colorScheme: ColorScheme.fromSeed(
               seedColor: MyColors.highlight.darkest,
             ).copyWith(primary: MyColors.highlight.darkest),

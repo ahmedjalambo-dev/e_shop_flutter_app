@@ -1,5 +1,7 @@
 import 'package:e_shop_flutter_app/core/di/injection.dart';
 import 'package:e_shop_flutter_app/core/themes/my_colors.dart';
+import 'package:e_shop_flutter_app/core/themes/my_text_style.dart';
+import 'package:e_shop_flutter_app/core/widgets/my_drawer.dart';
 import 'package:e_shop_flutter_app/features/home/cubit/categories_cubit.dart';
 import 'package:e_shop_flutter_app/features/home/cubit/products_cubit.dart';
 import 'package:e_shop_flutter_app/features/home/ui/home_screen.dart';
@@ -42,18 +44,23 @@ class _MyRootState extends State<MyRoot> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(child: _screens.elementAt(_selectedIndex)),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 50,
-              color: MyColors.highlight.lightest,
-              spreadRadius: 0.5,
+      appBar: AppBar(
+        actions: [
+          const Padding(
+            padding: EdgeInsetsDirectional.only(end: 16),
+            child: CircleAvatar(
+              radius: 20,
+              backgroundImage: NetworkImage(
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_R2SBa_HY3-SDok8d6qfgujQFK6tJbvLxHtkRs4mjTJC-qIvRH8_aMLnFwfPbrfFoCss&usqp=CAU',
+              ),
             ),
-          ],
-        ),
+          ),
+        ],
+      ),
+      body: IndexedStack(index: _selectedIndex, children: _screens),
+      drawer: const MyDrawer(),
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(color: Colors.white),
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -69,11 +76,26 @@ class _MyRootState extends State<MyRoot> {
               tabBackgroundColor: MyColors.highlight.light,
               color: MyColors.neutral.light.darkest,
               tabs: [
-                const GButton(icon: Icons.home_filled, text: 'Home'),
-                const GButton(icon: CupertinoIcons.cart, text: 'Cart'),
-                const GButton(
-                  icon: Icons.favorite_border_rounded,
+                GButton(
+                  icon: Icons.home_filled,
+                  text: 'Home',
+                  textStyle: MyTextStyle.heading.h5.copyWith(
+                    color: MyColors.highlight.darkest,
+                  ),
+                ),
+                GButton(
+                  icon: CupertinoIcons.bag_fill,
+                  text: 'Cart',
+                  textStyle: MyTextStyle.heading.h5.copyWith(
+                    color: MyColors.highlight.darkest,
+                  ),
+                ),
+                GButton(
+                  icon: Icons.favorite_rounded,
                   text: 'Favorite',
+                  textStyle: MyTextStyle.heading.h5.copyWith(
+                    color: MyColors.highlight.darkest,
+                  ),
                 ),
               ],
               selectedIndex: _selectedIndex,

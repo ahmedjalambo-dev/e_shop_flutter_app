@@ -1,10 +1,8 @@
-import 'package:e_shop_flutter_app/core/themes/my_colors.dart';
 import 'package:e_shop_flutter_app/core/widgets/my_drawer.dart';
 import 'package:e_shop_flutter_app/core/widgets/spacing_widgets.dart';
 import 'package:e_shop_flutter_app/features/home/ui/widgets/categories_bloc_builder.dart';
 import 'package:e_shop_flutter_app/features/home/ui/widgets/products_bloc_builder.dart';
 import 'package:e_shop_flutter_app/features/home/ui/widgets/title_view_all.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -12,19 +10,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              CupertinoIcons.bag,
-              color: MyColors.neutral.dark.darkest,
-            ),
-          ),
-        ],
-      ),
-      drawer: const MyDrawer(),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
