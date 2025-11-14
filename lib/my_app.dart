@@ -2,6 +2,7 @@ import 'package:e_shop_flutter_app/core/routes/my_router.dart';
 import 'package:e_shop_flutter_app/core/routes/my_routes.dart';
 import 'package:e_shop_flutter_app/core/themes/my_colors.dart';
 import 'package:e_shop_flutter_app/core/themes/my_text_style.dart';
+import 'package:e_shop_flutter_app/my_root.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       builder: (context, child) {
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           title: 'Gaza Tech Market',
           theme: ThemeData(
             fontFamily: kFontFamily,
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
           initialRoute: isFirstTime
               ? MyRoutes.onboarding
               : isLoggedIn
-              ? MyRoutes.home
+              ? MyRoutes.root
               : MyRoutes.login,
         );
       },

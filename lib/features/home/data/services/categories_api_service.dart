@@ -12,4 +12,4 @@ abstract class CategoriesApiService {
 
   @GET(ApiConstants.categories)
   Future<CategoriesResponse> getCategories();
-}
+} 

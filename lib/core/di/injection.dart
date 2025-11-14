@@ -9,9 +9,12 @@ import 'package:e_shop_flutter_app/features/auth/signup/data/services/signup_api
 import 'package:e_shop_flutter_app/features/auth/verify_email/cubit/verify_email_cubit.dart';
 import 'package:e_shop_flutter_app/features/auth/verify_email/data/repos/verify_email_repo.dart';
 import 'package:e_shop_flutter_app/features/auth/verify_email/data/services/verify_email_api_service.dart';
-import 'package:e_shop_flutter_app/features/home/cubit/categories_cubit/categories_cubit.dart';
+import 'package:e_shop_flutter_app/features/home/cubit/categories_cubit.dart';
+import 'package:e_shop_flutter_app/features/home/cubit/products_cubit.dart';
 import 'package:e_shop_flutter_app/features/home/data/repos/categories_repo.dart';
+import 'package:e_shop_flutter_app/features/home/data/repos/products_repo.dart';
 import 'package:e_shop_flutter_app/features/home/data/services/categories_api_service.dart';
+import 'package:e_shop_flutter_app/features/home/data/services/products_api_service.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
@@ -19,7 +22,6 @@ final getIt = GetIt.instance;
 Future<void> setupGetIt() async {
   // Dio & ApiService
   Dio dio = DioFactory.getDio();
-  // getIt.registerLazySingleton<ApiService>(() => ApiService(dio));
 
   // login
   getIt.registerLazySingleton<LoginApiService>(() => LoginApiService(dio));
@@ -57,10 +59,12 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<CategoriesRepo>(() => CategoriesRepo(getIt()));
   getIt.registerFactory<CategoriesCubit>(() => CategoriesCubit(getIt()));
 
-  // getIt.registerLazySingleton<ProductsService>(() => ProductsService(dio));
-  // getIt.registerLazySingleton<ProductsRepo>(() => ProductsRepo(getIt()));
+  getIt.registerLazySingleton<ProductsApiService>(
+    () => ProductsApiService(dio),
+  );
+  getIt.registerLazySingleton<ProductsRepo>(() => ProductsRepo(getIt()));
+  getIt.registerFactory<ProductsCubit>(() => ProductsCubit(getIt()));
 
-  // getIt.registerFactory(() => HomeCubit(getIt(), getIt()));
 
   // // Add Cart
   // getIt.registerLazySingleton<CartService>(() => CartService(dio));

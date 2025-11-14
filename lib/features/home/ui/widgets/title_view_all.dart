@@ -14,7 +14,10 @@ class TitleSeeMore extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(title, style: MyTextStyle.heading.h4),
-          TextButton(onPressed: onPressed, child: const Text('See more')),
+          TextButton(
+            onPressed: onPressed,
+            child: Text('View All', style: MyTextStyle.action.m),
+          ),
         ],
       ),
     );

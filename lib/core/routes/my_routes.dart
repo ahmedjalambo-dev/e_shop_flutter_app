@@ -5,6 +5,7 @@ class MyRoutes {
   static const String verifyEmail = '/verify_email';
   static const String forgotPassword = '/forgot_password';
   static const String validateOtp = '/validate_otp';
+  static const String root = '/root';
   static const String resetPassword = '/reset_password';
   static const String home = '/home';
 }
