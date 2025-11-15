@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'verify_email_api_service.dart';
+part of 'validate_otp_api_service.dart';
 
 // dart format off
 
@@ -10,8 +10,8 @@ part of 'verify_email_api_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter
 
-class _VerifyEmailApiService implements VerifyEmailApiService {
-  _VerifyEmailApiService(this._dio, {this.baseUrl, this.errorLogger}) {
+class _ValidateOtpApiService implements ValidateOtpApiService {
+  _ValidateOtpApiService(this._dio, {this.baseUrl, this.errorLogger}) {
     baseUrl ??= 'https://accessories-eshop.runasp.net/';
   }
 
@@ -22,19 +22,19 @@ class _VerifyEmailApiService implements VerifyEmailApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<String> verifyEmail(
-    VerifyEmailRequestBody verifyEmailRequestBody,
+  Future<String> validateOtp(
+    ValidateOtpRequestBody validateOtpRequestBody,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(verifyEmailRequestBody.toJson());
+    _data.addAll(validateOtpRequestBody.toJson());
     final _options = _setStreamType<String>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'api/auth/verify-email',
+            'api/auth/validate-otp',
             queryParameters: queryParameters,
             data: _data,
           )

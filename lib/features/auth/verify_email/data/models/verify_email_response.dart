@@ -25,18 +25,9 @@ class VerifyEmailResponse {
     return errors!.values.expand((list) => list).toList();
   }
 
-  // Custom factory to handle both string and object responses
-  factory VerifyEmailResponse.fromJson(dynamic json) {
-    if (json is String) {
-      // Handle success response as plain string
-      return VerifyEmailResponse(message: json);
-    } else if (json is Map<String, dynamic>) {
-      // Handle error response as object
-      return _$VerifyEmailResponseFromJson(json);
-    } else {
-      throw const FormatException('Unexpected JSON format');
-    }
-  }
+  // Standard fromJson for error responses
+  factory VerifyEmailResponse.fromJson(Map<String, dynamic> json) =>
+      _$VerifyEmailResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$VerifyEmailResponseToJson(this);
 }

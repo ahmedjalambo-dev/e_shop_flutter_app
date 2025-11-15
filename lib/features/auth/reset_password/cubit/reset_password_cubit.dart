@@ -13,7 +13,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
     : super(const ResetPasswordState.initial());
 
   final formKey = GlobalKey<FormState>();
-  final otpController = TextEditingController();
+  // REMOVED: otpController - no longer needed
   final newPasswordController = TextEditingController();
 
   // For real-time password validation UI
@@ -30,7 +30,6 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
     // hasDigit = ValidatorHelper.validateHasDigit(password) == null;
     // hasSpecialCharacter =
     //     ValidatorHelper.validateHasSpecialCharacter(password) == null;
-    // Emit a state to rebuild the UI, or handle this within a StatefulWidget's setState
   }
 
   void emitResetPasswordState() async {
@@ -38,7 +37,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
     final response = await _resetPasswordRepo.resetPassword(
       ResetPasswordRequestBody(
         email: email,
-        otp: otpController.text,
+        otp: '', // Send empty OTP since it was already validated
         newPassword: newPasswordController.text,
       ),
     );

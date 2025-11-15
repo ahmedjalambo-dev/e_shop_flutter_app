@@ -12,8 +12,13 @@ class VerifyEmailRepo {
     VerifyEmailRequestBody verifyEmailRequestBody,
   ) async {
     try {
+      // API returns a plain string, so we wrap it in VerifyEmailResponse
       final response = await _apiService.verifyEmail(verifyEmailRequestBody);
-      return ApiResult.success(response);
+
+      // Create VerifyEmailResponse from the string
+      final verifyEmailResponse = VerifyEmailResponse(message: response);
+
+      return ApiResult.success(verifyEmailResponse);
     } catch (error) {
       return ApiResult.failure(ErrorHandler.handle(error));
     }

@@ -13,6 +13,9 @@ import 'package:e_shop_flutter_app/features/auth/reset_password/data/services/re
 import 'package:e_shop_flutter_app/features/auth/signup/cubit/signup_cubit.dart';
 import 'package:e_shop_flutter_app/features/auth/signup/data/repos/signup_repo.dart';
 import 'package:e_shop_flutter_app/features/auth/signup/data/services/signup_api_service.dart';
+import 'package:e_shop_flutter_app/features/auth/validate_otp/cubit/validate_otp_cubit.dart';
+import 'package:e_shop_flutter_app/features/auth/validate_otp/data/repos/validate_otp_repo.dart';
+import 'package:e_shop_flutter_app/features/auth/validate_otp/data/services/validate_otp_api_service.dart';
 import 'package:e_shop_flutter_app/features/auth/verify_email/cubit/verify_email_cubit.dart';
 import 'package:e_shop_flutter_app/features/auth/verify_email/data/repos/verify_email_repo.dart';
 import 'package:e_shop_flutter_app/features/auth/verify_email/data/services/verify_email_api_service.dart';
@@ -65,6 +68,15 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton(() => ResetPasswordRepo(getIt()));
   getIt.registerFactoryParam<ResetPasswordCubit, String, void>(
     (email, _) => ResetPasswordCubit(getIt(), email),
+  );
+
+  // validate otp
+  getIt.registerLazySingleton<ValidateOtpApiService>(
+    () => ValidateOtpApiService(dio),
+  );
+  getIt.registerLazySingleton(() => ValidateOtpRepo(getIt()));
+  getIt.registerFactoryParam<ValidateOtpCubit, String, void>(
+    (email, _) => ValidateOtpCubit(getIt(), email),
   );
 
   // home

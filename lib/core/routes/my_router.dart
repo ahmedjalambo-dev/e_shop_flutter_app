@@ -4,6 +4,8 @@ import 'package:e_shop_flutter_app/features/auth/forgot_password/cubit/forgot_pa
 import 'package:e_shop_flutter_app/features/auth/forgot_password/ui/forgot_password_screen.dart';
 import 'package:e_shop_flutter_app/features/auth/reset_password/cubit/reset_password_cubit.dart';
 import 'package:e_shop_flutter_app/features/auth/reset_password/ui/reset_password_screen.dart';
+import 'package:e_shop_flutter_app/features/auth/validate_otp/cubit/validate_otp_cubit.dart';
+import 'package:e_shop_flutter_app/features/auth/validate_otp/ui/validate_otp_screen.dart';
 import 'package:e_shop_flutter_app/features/auth/verify_email/cubit/verify_email_cubit.dart';
 import 'package:e_shop_flutter_app/features/favorite/cubit/favorite_cubit.dart';
 import 'package:e_shop_flutter_app/features/home/cubit/categories_cubit.dart';
@@ -45,6 +47,16 @@ class MyRouter {
           builder: (context) => BlocProvider(
             create: (context) => getIt<ForgotPasswordCubit>(),
             child: const ForgotPasswordScreen(),
+          ),
+        );
+      case MyRoutes.validateOtp:
+        final email = settings.arguments as String;
+        final otp = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) =>
+                getIt<ValidateOtpCubit>(param1: email, param2: otp),
+            child: ValidateOtpScreen(email: email),
           ),
         );
       case MyRoutes.verifyEmail:
