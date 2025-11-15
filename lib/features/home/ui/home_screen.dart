@@ -1,4 +1,3 @@
-import 'package:e_shop_flutter_app/core/widgets/my_drawer.dart';
 import 'package:e_shop_flutter_app/core/widgets/spacing_widgets.dart';
 import 'package:e_shop_flutter_app/features/home/ui/widgets/categories_bloc_builder.dart';
 import 'package:e_shop_flutter_app/features/home/ui/widgets/products_bloc_builder.dart';

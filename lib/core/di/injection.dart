@@ -1,9 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:e_shop_flutter_app/core/db/database_helper.dart';
 import 'package:e_shop_flutter_app/core/netowoks/dio_factory.dart';
+import 'package:e_shop_flutter_app/features/auth/forgot_password/cubit/forgot_password_cubit.dart';
+import 'package:e_shop_flutter_app/features/auth/forgot_password/data/repos/forgot_password_repo.dart';
+import 'package:e_shop_flutter_app/features/auth/forgot_password/data/services/forgot_password_api_service.dart';
 import 'package:e_shop_flutter_app/features/auth/login/cubit/login_cubit.dart';
 import 'package:e_shop_flutter_app/features/auth/login/data/repos/login_repo.dart';
 import 'package:e_shop_flutter_app/features/auth/login/data/services/login_api_service.dart';
+import 'package:e_shop_flutter_app/features/auth/reset_password/cubit/reset_password_cubit.dart';
+import 'package:e_shop_flutter_app/features/auth/reset_password/data/repos/reset_password_repo.dart';
+import 'package:e_shop_flutter_app/features/auth/reset_password/data/services/reset_password_api_service.dart';
 import 'package:e_shop_flutter_app/features/auth/signup/cubit/signup_cubit.dart';
 import 'package:e_shop_flutter_app/features/auth/signup/data/repos/signup_repo.dart';
 import 'package:e_shop_flutter_app/features/auth/signup/data/services/signup_api_service.dart';
@@ -45,15 +51,21 @@ Future<void> setupGetIt() async {
     (email, _) => VerifyEmailCubit(getIt(), email),
   );
 
-  // // forgot password
-  // getIt.registerLazySingleton(() => ForgotPasswordRepo(getIt()));
-  // getIt.registerFactory(() => ForgotPasswordCubit(getIt()));
+  // forgot password
+  getIt.registerLazySingleton<ForgotPasswordApiService>(
+    () => ForgotPasswordApiService(dio),
+  );
+  getIt.registerLazySingleton(() => ForgotPasswordRepo(getIt()));
+  getIt.registerFactory(() => ForgotPasswordCubit(getIt()));
 
-  // // reset password
-  // getIt.registerLazySingleton(() => ResetPasswordRepo(getIt()));
-  // getIt.registerFactoryParam<ResetPasswordCubit, String, void>(
-  //   (email, _) => ResetPasswordCubit(getIt(), email),
-  // );
+  // reset password
+  getIt.registerLazySingleton<ResetPasswordApiService>(
+    () => ResetPasswordApiService(dio),
+  );
+  getIt.registerLazySingleton(() => ResetPasswordRepo(getIt()));
+  getIt.registerFactoryParam<ResetPasswordCubit, String, void>(
+    (email, _) => ResetPasswordCubit(getIt(), email),
+  );
 
   // home
   getIt.registerLazySingleton<CategoriesApiService>(

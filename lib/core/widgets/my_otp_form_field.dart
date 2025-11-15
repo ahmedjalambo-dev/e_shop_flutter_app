@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class OtpInputWidget extends StatefulWidget {
+class MyOtpFormField extends StatefulWidget {
   final int length;
   final ValueChanged<String>? onCompleted;
   final ValueChanged<String>? onChanged;
 
-  const OtpInputWidget({
+  const MyOtpFormField({
     super.key,
     this.length = 6,
     this.onCompleted,
@@ -17,10 +17,10 @@ class OtpInputWidget extends StatefulWidget {
   });
 
   @override
-  State<OtpInputWidget> createState() => _OtpInputWidgetState();
+  State<MyOtpFormField> createState() => _MyOtpFormFieldState();
 }
 
-class _OtpInputWidgetState extends State<OtpInputWidget> {
+class _MyOtpFormFieldState extends State<MyOtpFormField> {
   late List<TextEditingController> _controllers;
   late List<FocusNode> _focusNodes;
 

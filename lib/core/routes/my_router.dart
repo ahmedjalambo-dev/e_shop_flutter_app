@@ -1,6 +1,9 @@
 import 'package:e_shop_flutter_app/core/di/injection.dart';
 import 'package:e_shop_flutter_app/core/routes/my_routes.dart';
-import 'package:e_shop_flutter_app/features/auth/forget_password/ui/forgot_password_screen.dart';
+import 'package:e_shop_flutter_app/features/auth/forgot_password/cubit/forgot_password_cubit.dart';
+import 'package:e_shop_flutter_app/features/auth/forgot_password/ui/forgot_password_screen.dart';
+import 'package:e_shop_flutter_app/features/auth/reset_password/cubit/reset_password_cubit.dart';
+import 'package:e_shop_flutter_app/features/auth/reset_password/ui/reset_password_screen.dart';
 import 'package:e_shop_flutter_app/features/auth/verify_email/cubit/verify_email_cubit.dart';
 import 'package:e_shop_flutter_app/features/favorite/cubit/favorite_cubit.dart';
 import 'package:e_shop_flutter_app/features/home/cubit/categories_cubit.dart';
@@ -9,7 +12,6 @@ import 'package:e_shop_flutter_app/features/home/ui/home_screen.dart';
 import 'package:e_shop_flutter_app/features/auth/login/cubit/login_cubit.dart';
 import 'package:e_shop_flutter_app/features/auth/login/ui/login_screen.dart';
 import 'package:e_shop_flutter_app/features/onboarding/onboarding_screen.dart';
-import 'package:e_shop_flutter_app/features/auth/reset_password/ui/reset_password_screen.dart';
 import 'package:e_shop_flutter_app/features/auth/signup/cubit/signup_cubit.dart';
 import 'package:e_shop_flutter_app/features/auth/signup/ui/sginup_screen.dart';
 import 'package:e_shop_flutter_app/features/auth/verify_email/ui/verify_email_screen.dart';
@@ -40,7 +42,10 @@ class MyRouter {
         );
       case MyRoutes.forgotPassword:
         return MaterialPageRoute(
-          builder: (context) => const ForgotPasswordScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<ForgotPasswordCubit>(),
+            child: const ForgotPasswordScreen(),
+          ),
         );
       case MyRoutes.verifyEmail:
         final email = settings.arguments as String;
@@ -51,8 +56,12 @@ class MyRouter {
           ),
         );
       case MyRoutes.resetPassword:
+        final email = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) => const ResetPasswordScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<ResetPasswordCubit>(param1: email),
+            child: const ResetPasswordScreen(),
+          ),
         );
       case MyRoutes.root:
         return MaterialPageRoute(

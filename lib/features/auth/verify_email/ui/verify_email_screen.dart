@@ -3,7 +3,7 @@ import 'package:e_shop_flutter_app/core/themes/my_text_style.dart';
 import 'package:e_shop_flutter_app/core/widgets/my_text_button.dart';
 import 'package:e_shop_flutter_app/core/widgets/spacing_widgets.dart';
 import 'package:e_shop_flutter_app/features/auth/verify_email/cubit/verify_email_cubit.dart';
-import 'package:e_shop_flutter_app/features/auth/verify_email/ui/widget/otp_input.dart';
+import 'package:e_shop_flutter_app/core/widgets/my_otp_form_field.dart';
 import 'package:e_shop_flutter_app/features/auth/verify_email/ui/widget/verify_email_bloc_listener.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +17,6 @@ class VerifyEmailScreen extends StatefulWidget {
 }
 
 class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
-  late TextEditingController otpController;
   String otpCode = '';
   bool isOtpComplete = false;
   @override
@@ -38,7 +37,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
               ),
             ),
             const VerticalSpace(24),
-            OtpInputWidget(
+            MyOtpFormField(
               length: 6,
               onChanged: (value) {
                 setState(() {
