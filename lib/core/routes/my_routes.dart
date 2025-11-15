@@ -8,4 +8,5 @@ class MyRoutes {
   static const String root = '/root';
   static const String resetPassword = '/reset_password';
   static const String home = '/home';
+  static const String productDetails = '/product_details';
 }

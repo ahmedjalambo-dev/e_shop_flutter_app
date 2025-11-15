@@ -10,9 +10,11 @@ import 'package:e_shop_flutter_app/features/auth/verify_email/cubit/verify_email
 import 'package:e_shop_flutter_app/features/favorite/cubit/favorite_cubit.dart';
 import 'package:e_shop_flutter_app/features/home/cubit/categories_cubit.dart';
 import 'package:e_shop_flutter_app/features/home/cubit/products_cubit.dart';
+import 'package:e_shop_flutter_app/features/home/data/models/products_response.dart';
 import 'package:e_shop_flutter_app/features/home/ui/home_screen.dart';
 import 'package:e_shop_flutter_app/features/auth/login/cubit/login_cubit.dart';
 import 'package:e_shop_flutter_app/features/auth/login/ui/login_screen.dart';
+import 'package:e_shop_flutter_app/features/home/ui/product_details_screen.dart';
 import 'package:e_shop_flutter_app/features/onboarding/onboarding_screen.dart';
 import 'package:e_shop_flutter_app/features/auth/signup/cubit/signup_cubit.dart';
 import 'package:e_shop_flutter_app/features/auth/signup/ui/sginup_screen.dart';
@@ -97,6 +99,11 @@ class MyRouter {
             ],
             child: const HomeScreen(),
           ),
+        );
+      case MyRoutes.productDetails:
+        final product = settings.arguments as Product;
+        return MaterialPageRoute(
+          builder: (context) => ProductDetailsScreen(product: product),
         );
       default:
         return null;
