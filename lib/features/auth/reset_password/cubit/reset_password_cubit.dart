@@ -8,8 +8,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class ResetPasswordCubit extends Cubit<ResetPasswordState> {
   final ResetPasswordRepo _resetPasswordRepo;
   final String email;
+  final String otp;
 
-  ResetPasswordCubit(this._resetPasswordRepo, this.email)
+  ResetPasswordCubit(this._resetPasswordRepo, this.email, this.otp)
     : super(const ResetPasswordState.initial());
 
   final formKey = GlobalKey<FormState>();
@@ -37,7 +38,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
     final response = await _resetPasswordRepo.resetPassword(
       ResetPasswordRequestBody(
         email: email,
-        otp: '', // Send empty OTP since it was already validated
+        otp: otp, // Send empty OTP since it was already validated
         newPassword: newPasswordController.text,
       ),
     );

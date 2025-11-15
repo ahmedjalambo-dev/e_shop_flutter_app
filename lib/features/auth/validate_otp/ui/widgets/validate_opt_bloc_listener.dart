@@ -23,9 +23,9 @@ class ValidateOtpBlocListener extends StatelessWidget {
           ),
           success: (successMessage) {
             context.pop(); // Close loading dialog
-
-            // Get the email from the cubit
-            final email = context.read<ValidateOtpCubit>().email;
+            final cubit = context.read<ValidateOtpCubit>();
+            final email = cubit.email;
+            final otp = cubit.otpCode;
 
             // Show success message
             ScaffoldMessenger.of(context).showSnackBar(
@@ -34,9 +34,10 @@ class ValidateOtpBlocListener extends StatelessWidget {
                 backgroundColor: Colors.green,
               ),
             );
-
-            // Navigate to reset password screen
-            context.pushNamed(MyRoutes.resetPassword, arguments: email);
+            context.pushNamed(
+              MyRoutes.resetPassword,
+              arguments: {'email': email, 'otp': otp},
+            );
           },
           failure: (errorMessage) {
             context.pop(); // Close loading dialog

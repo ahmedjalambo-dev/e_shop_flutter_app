@@ -68,10 +68,10 @@ class MyRouter {
           ),
         );
       case MyRoutes.resetPassword:
-        final email = settings.arguments as String;
+        final args = settings.arguments as Map<String, String>;
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => getIt<ResetPasswordCubit>(param1: email),
+            create: (context) => getIt<ResetPasswordCubit>(param1: args),
             child: const ResetPasswordScreen(),
           ),
         );

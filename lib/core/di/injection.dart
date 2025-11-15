@@ -66,8 +66,9 @@ Future<void> setupGetIt() async {
     () => ResetPasswordApiService(dio),
   );
   getIt.registerLazySingleton(() => ResetPasswordRepo(getIt()));
-  getIt.registerFactoryParam<ResetPasswordCubit, String, void>(
-    (email, _) => ResetPasswordCubit(getIt(), email),
+  getIt.registerFactoryParam<ResetPasswordCubit, Map<String, String>, void>(
+    (params, _) =>
+        ResetPasswordCubit(getIt(), params['email']!, params['otp']!),
   );
 
   // validate otp
