@@ -78,12 +78,7 @@ class MyRouter {
           ),
         );
       case MyRoutes.root:
-        return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<FavoriteCubit>(),
-            child: const MyRoot(),
-          ),
-        );
+        return MaterialPageRoute(builder: (context) => const MyRoot());
       case MyRoutes.home:
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(
@@ -101,9 +96,12 @@ class MyRouter {
           ),
         );
       case MyRoutes.productDetails:
-        final product = settings.arguments as Product;
+        final args = settings.arguments as Map<String, dynamic>;
+        final product = args['product'] as Product;
+        final heroTag = args['heroTag'] as String;
         return MaterialPageRoute(
-          builder: (context) => ProductDetailsScreen(product: product),
+          builder: (context) =>
+              ProductDetailsScreen(product: product, heroTag: heroTag),
         );
       default:
         return null;

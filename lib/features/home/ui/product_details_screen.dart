@@ -1,6 +1,6 @@
-// lib/features/home/ui/product_details_screen.dart
-
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_shop_flutter_app/core/di/injection.dart';
+import 'package:e_shop_flutter_app/core/extentions/extentions.dart';
 import 'package:e_shop_flutter_app/core/themes/my_colors.dart';
 import 'package:e_shop_flutter_app/core/themes/my_text_style.dart';
 import 'package:e_shop_flutter_app/core/widgets/my_text_button.dart';
@@ -14,8 +14,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   final Product product;
+  final String heroTag;
 
-  const ProductDetailsScreen({super.key, required this.product});
+  const ProductDetailsScreen({
+    super.key,
+    required this.product,
+    required this.heroTag,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,29 +34,11 @@ class ProductDetailsScreen extends StatelessWidget {
             pinned: true,
             backgroundColor: Colors.white,
             elevation: 0,
-            // ✅ FORCE SHOW LEADING WIDGET
-            automaticallyImplyLeading: false,
             leading: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: GestureDetector(
-                onTap: () => Navigator.of(context).pop(),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 8,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  child: Icon(
-                    Icons.arrow_back,
-                    color: MyColors.neutral.dark.darkest,
-                  ),
-                ),
+              child: IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () => context.pop(),
               ),
             ),
             actions: [
@@ -59,34 +46,18 @@ class ProductDetailsScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: BlocBuilder<FavoriteCubit, FavoriteState>(
                   builder: (context, state) {
-                    final isFav = context.watch<FavoriteCubit>().isFavorite(
+                    final isFav = context.read<FavoriteCubit>().isFavorite(
                       product.id,
                     );
-                    return GestureDetector(
-                      onTap: () {
-                        context.read<FavoriteCubit>().toggleFavorite(product);
-                      },
-                      child: Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.circle,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
-                              blurRadius: 8,
-                              offset: const Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                        child: Icon(
-                          isFav ? Icons.favorite : Icons.favorite_border,
-                          color: isFav
-                              ? MyColors.support.error.dark
-                              : MyColors.neutral.dark.dark,
-                          size: 22,
-                        ),
+                    return IconButton(
+                      onPressed: () =>
+                          context.read<FavoriteCubit>().toggleFavorite(product),
+                      icon: Icon(
+                        isFav ? Icons.favorite : Icons.favorite_border,
+                        color: isFav
+                            ? MyColors.support.error.dark
+                            : MyColors.neutral.dark.dark,
+                        size: 22,
                       ),
                     );
                   },
@@ -95,7 +66,7 @@ class ProductDetailsScreen extends StatelessWidget {
             ],
             flexibleSpace: FlexibleSpaceBar(
               background: Hero(
-                tag: 'product_${product.id}',
+                tag: heroTag,
                 child: CachedNetworkImage(
                   imageUrl: product.coverPictureUrl,
                   fit: BoxFit.cover,

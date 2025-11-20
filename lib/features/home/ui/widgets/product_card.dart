@@ -15,16 +15,19 @@ class ProductCard extends StatelessWidget {
   final Product product;
   final double horizontalPadding;
   final double verticalPadding;
+  final String heroTagPrefix;
 
   const ProductCard({
     super.key,
     required this.product,
     this.horizontalPadding = 0,
     this.verticalPadding = 0,
+    this.heroTagPrefix = 'product',
   });
 
   @override
   Widget build(BuildContext context) {
+    final String uniqueTag = '${heroTagPrefix}_${product.id}';
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: horizontalPadding,
@@ -33,7 +36,10 @@ class ProductCard extends StatelessWidget {
 
       child: GestureDetector(
         onTap: () {
-          context.pushNamed(MyRoutes.productDetails, arguments: product);
+          context.pushNamed(
+            MyRoutes.productDetails,
+            arguments: {'product': product, 'heroTag': uniqueTag},
+          );
         },
         child: Container(
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(12.dg)),
@@ -43,7 +49,7 @@ class ProductCard extends StatelessWidget {
               Stack(
                 children: [
                   Hero(
-                    tag: 'product_${product.id}',
+                    tag: uniqueTag,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12.dg),
                       child: CachedNetworkImage(

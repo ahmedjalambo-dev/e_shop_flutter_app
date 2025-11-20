@@ -35,7 +35,10 @@ class ProductsBlocBuilder extends StatelessWidget {
             ),
             itemCount: prodcutResponse.items.length,
             itemBuilder: (context, index) {
-              return ProductCard(product: prodcutResponse.items[index]);
+              return ProductCard(
+                product: prodcutResponse.items[index],
+                heroTagPrefix: 'home',
+              );
             },
           ),
           orElse: () => const SizedBox.shrink(),

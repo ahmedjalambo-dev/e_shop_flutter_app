@@ -47,7 +47,10 @@ class FavoriteScreen extends StatelessWidget {
                 itemCount: favorites.length,
                 itemBuilder: (context, index) {
                   // We already have the full Product object
-                  return ProductCard(product: favorites[index]);
+                  return ProductCard(
+                    product: favorites[index],
+                    heroTagPrefix: 'fav',
+                  );
                 },
               );
             },
