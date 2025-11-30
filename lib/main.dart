@@ -23,3 +23,5 @@ void main() async {
     ),
   );
 }
+
+// Startup refresh handled by Dio interceptor; no startup refresh here.

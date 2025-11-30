@@ -7,7 +7,6 @@ import 'package:e_shop_flutter_app/features/auth/reset_password/ui/reset_passwor
 import 'package:e_shop_flutter_app/features/auth/validate_otp/cubit/validate_otp_cubit.dart';
 import 'package:e_shop_flutter_app/features/auth/validate_otp/ui/validate_otp_screen.dart';
 import 'package:e_shop_flutter_app/features/auth/verify_email/cubit/verify_email_cubit.dart';
-import 'package:e_shop_flutter_app/features/favorite/cubit/favorite_cubit.dart';
 import 'package:e_shop_flutter_app/features/home/cubit/categories_cubit.dart';
 import 'package:e_shop_flutter_app/features/home/cubit/products_cubit.dart';
 import 'package:e_shop_flutter_app/features/home/data/models/products_response.dart';
