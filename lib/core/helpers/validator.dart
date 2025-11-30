@@ -1,4 +1,4 @@
-class ValidatorHelper {
+class Validator {
   // A good practice is to define regex patterns as static final constants
   // to avoid recompiling them on every method call.
   static final _emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
