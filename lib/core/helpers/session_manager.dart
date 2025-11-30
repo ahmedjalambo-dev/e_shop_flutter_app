@@ -65,14 +65,25 @@ class SessionManager {
   }
 
   static Future<void> _saveTokens(LoginResponse response) async {
+    // Save Access Token
     await SharedPrefHelper.setSecuredString(
       SharedPrefKeys.accessToken,
       response.accessToken ?? '',
     );
+
+    // Save Refresh Token (if provided)
     if (response.refreshToken != null) {
       await SharedPrefHelper.setSecuredString(
         SharedPrefKeys.refreshToken,
         response.refreshToken!,
+      );
+    }
+
+    // Save the Expiration Time
+    if (response.expiresAtUtc != null) {
+      await SharedPrefHelper.setSecuredString(
+        SharedPrefKeys.accessTokenExpiration,
+        response.expiresAtUtc!,
       );
     }
   }
